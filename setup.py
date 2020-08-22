@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='halcyon',
+    name='pyhalcyon',
     version='0.1.0',
     description=(
         'Halcyon: an accurate basecaller exploiting'
@@ -14,4 +14,9 @@ setup(
     install_requires=[
         line.strip() for line in open('./requirements.txt').readlines()
     ],
+    entry_points={
+        'console_scripts': [
+            'halcyon=halcyon.console:main'
+        ]
+    }
 )
