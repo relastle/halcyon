@@ -14,4 +14,9 @@ setup(
     install_requires=[
         line.strip() for line in open('./requirements.txt').readlines()
     ],
+    entry_points={
+        'console_scripts': [
+            'halcyon=halcyon.console:main'
+        ]
+    }
 )
