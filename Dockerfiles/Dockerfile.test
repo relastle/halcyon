@@ -1,0 +1,9 @@
+FROM relastle/halcyon
+
+MAINTAINER Hiroki Konishi <relastle@gmail.com>
+
+ADD requirements-dev.txt /opt/requirements-dev.txt
+RUN pip install -r /opt/requirements-dev.txt
+
+ENTRYPOINT []
+

@@ -5,7 +5,17 @@ lint:
 
 .PHONY: integration_test
 integration_test:
-	pytest -vvs ./integration_tests
+	coverage run --omit='./integration_tests/**/*,./setup.py' --source=. -m pytest -vvs --diff-type=split ./integration_tests
+	coverage xml -i
+	coverage report -m
+
+.PHONY: docker
+docker:
+	docker build -t relastle/halcyon -f ./Dockerfiles/Dockerfile .
+
+.PHONY: docker-test
+docker-test:
+	docker build -t relastle/halcyon-test -f ./Dockerfiles/Dockerfile.test .
 
 .PHONY: clean
 clean:
